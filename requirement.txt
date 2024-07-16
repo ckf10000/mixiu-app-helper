@@ -1,4 +1,4 @@
 twine==5.1.1
-wheel=0.43.0
+wheel==0.43.0
 setuptools==69.2.0
-airtest-helper==0.0.2
+airtest-helper==0.0.2GIT
