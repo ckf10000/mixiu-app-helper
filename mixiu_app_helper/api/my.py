@@ -14,21 +14,29 @@ from airtest_helper.core import DeviceApi
 from airtest_helper.platform import ANDROID_PLATFORM
 
 
-class MyApi(object):
+class MyApi(DeviceApi):
 
-    @classmethod
-    def get_my(cls, api: DeviceApi) -> UIObjectProxy:
+    def get_my(self) -> UIObjectProxy:
         d_type = ""
         name = ""
-        if api.platform == ANDROID_PLATFORM:
+        if self.platform == ANDROID_PLATFORM:
             d_type = "android.widget.TextView"
             name = "com.mixiu.com:id/tvTabItemText4"
-        return api.get_po(d_type=d_type, name=name, text="我的")
+        return self.get_po(d_type=d_type, name=name, text="我的")
 
-    @classmethod
-    def touch_my(cls, api: DeviceApi) -> bool:
-        my_poco = cls.get_my(api=api)
+    def touch_my(self) -> bool:
+        my_poco = self.get_my()
         if my_poco.exists() is True:
             my_poco.click()
             return True
         return False
+
+    def get_current_uid(self) -> int:
+        poco = self.get_po(
+            d_type="android.widget.LinearLayout", name="com.mixiu.com:id/llUidAddress"
+        ).child(name="android.widget.TextView")[1]
+        if poco.exists():
+            text = poco.get_text()
+            if isinstance(text, str) is True and text.isdigit() is True:
+                return int(text)
+        return 0
