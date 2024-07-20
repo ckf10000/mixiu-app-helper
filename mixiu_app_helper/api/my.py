@@ -31,12 +31,10 @@ class MyApi(DeviceApi):
             return True
         return False
 
-    def get_current_uid(self) -> int:
+    def get_current_uid(self) -> str:
         poco = self.get_po(
             d_type="android.widget.LinearLayout", name="com.mixiu.com:id/llUidAddress"
         ).child(name="android.widget.TextView")[1]
         if poco.exists():
-            text = poco.get_text()
-            if isinstance(text, str) is True and text.isdigit() is True:
-                return int(text)
-        return 0
+            return poco.get_text().strip()
+        return ""
