@@ -13,7 +13,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='mixiu-app-helper',
-    version='0.0.5',
+    version='0.0.6',
     description='This is my mixiu app helper package',
     long_description='This is my mixiu app helper package',
     author='ckf10000',
@@ -21,7 +21,7 @@ setup(
     url='https://github.com/ckf10000/mixiu-app-helper',
     packages=find_packages(),
     install_requires=[
-        'airtest-helper>=0.1.0'
+        'airtest-helper>=0.1.1'
     ],
     classifiers=[
         'Programming Language :: Python :: 3',
