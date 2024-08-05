@@ -27,7 +27,7 @@ class UiSettingsApi(UiProfileApi):
         return get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
 
     def touch_settings_enter(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
-        settings_enter_poco = self.get_my(loop=loop, peroid=peroid, **kwargs)
+        settings_enter_poco = self.get_settings_enter(loop=loop, peroid=peroid, **kwargs)
         if settings_enter_poco:
             settings_enter_poco.click()
             return True
