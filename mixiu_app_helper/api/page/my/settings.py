@@ -10,12 +10,12 @@
 # ---------------------------------------------------------------------------------------------------------
 """
 from poco.proxy import UIObjectProxy
-from airtest_helper.core import DeviceApi
 from airtest_helper.platform import ANDROID_PLATFORM
 from airtest_helper.libs.extend import get_poco_factory
+from mixiu_app_helper.api.page.my.profile import UiProfileApi
 
 
-class UiSettingsApi(DeviceApi):
+class UiSettingsApi(UiProfileApi):
 
     def get_settings_enter(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
         d_type = ""
