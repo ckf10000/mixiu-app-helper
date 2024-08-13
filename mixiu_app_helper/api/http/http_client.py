@@ -15,7 +15,7 @@ import requests
 import typing as t
 from airtest_helper.log import logger
 
-urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+urllib3.disable_warnings()
 
 
 class HttpService(object):
@@ -78,12 +78,10 @@ class HttpService(object):
         if method in ("get", "post"):
             try:
                 if method == "get":
-                    response = requests.get(self.__url, params=params, verify=False, timeout=self.__time_out,
-                                            headers=self.__headers)
+                    response = requests.get(self.__url, params=params, timeout=self.__time_out, headers=self.__headers)
                 else:
                     response = requests.post(
-                        self.__url, params=params, json=json, data=data, verify=False, timeout=self.__time_out,
-                        headers=self.__headers
+                        self.__url, params=params, json=json, data=data, timeout=self.__time_out, headers=self.__headers
                     )
                 result = self.__parse_data_response(response=response)
             except Exception as e:
