@@ -2,10 +2,10 @@
 """
 # ---------------------------------------------------------------------------------------------------------
 # ProjectName:  mixiu-app-helper
-# FileName:     auth.py
+# FileName:     square.py
 # Description:  TODO
 # Author:       mfkifhss2023
-# CreateDate:   2024/08/12
+# CreateDate:   2024/08/15
 # Copyright ©2011-2024. Hunan xxxxxxx Company limited. All rights reserved.
 # ---------------------------------------------------------------------------------------------------------
 """
@@ -13,19 +13,19 @@ from enum import Enum
 from mixiu_app_helper.api.http.http_client import HttpApiMeta
 
 
-class AuthPathAndroidSuffix(Enum):
-    auth_info = '/auth/getAuthInfos'
+class SquarePathAndroidSuffix(Enum):
+    moment_list = '/square/moment/listMoment'
 
 
-class AuthPathIOSSuffix(Enum):
+class SquarePathIOSSuffix(Enum):
     pass
 
 
-class AuthHttpApi(HttpApiMeta):
+class SquareHttpApi(HttpApiMeta):
 
     def __init__(self, domain: str, protocol: str):
         super().__init__(domain, protocol)
 
-    def get_auth_info(self, json: dict) -> dict:
-        """获取认证信息"""
-        return self.http_client.send_request(method="post", path=AuthPathAndroidSuffix.auth_info.value, json=json)
+    def get_square_moment_list(self, json: dict) -> dict:
+        """获取广场重要信息列表"""
+        return self.http_client.send_request(method="post", path=SquarePathAndroidSuffix.moment_list.value, json=json)

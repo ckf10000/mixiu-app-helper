@@ -13,8 +13,12 @@ from enum import Enum
 from mixiu_app_helper.api.http.http_client import HttpApiMeta
 
 
-class PlayWithPathSuffix(Enum):
+class PlayWithPathAndroidSuffix(Enum):
     order_pagination = '/playwith/order/list'
+
+
+class PlayWithPathIOSSuffix(Enum):
+    pass
 
 
 class PlayWithHttpApi(HttpApiMeta):
@@ -24,4 +28,6 @@ class PlayWithHttpApi(HttpApiMeta):
 
     def get_order_pagination(self, json: dict) -> dict:
         """获取分页订单"""
-        return self.http_client.send_request(method="post", path=PlayWithPathSuffix.order_pagination.value, json=json)
+        return self.http_client.send_request(
+            method="post", path=PlayWithPathAndroidSuffix.order_pagination.value, json=json
+        )
