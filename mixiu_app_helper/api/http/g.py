@@ -2,7 +2,7 @@
 """
 # ---------------------------------------------------------------------------------------------------------
 # ProjectName:  mixiu-app-helper
-# FileName:     global.py
+# FileName:     g.py
 # Description:  TODO
 # Author:       mfkifhss2023
 # CreateDate:   2024/08/15
