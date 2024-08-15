@@ -78,7 +78,7 @@ class MaintainHttpApi(HttpApiMeta):
         return self.http_client.send_request(method="post", path=MaintainPathAndroidSuffix.app_skin.value, json=json)
 
     def get_main_banner_list_module(self, json: dict) -> dict:
-        """获取首页banner模块列表"""
+        """获取首页banner列表模块"""
         return self.http_client.send_request(
             method="post", path=MaintainPathAndroidSuffix.banner_list_module.value, json=json
         )
