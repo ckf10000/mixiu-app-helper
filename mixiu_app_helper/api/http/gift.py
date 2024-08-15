@@ -26,6 +26,6 @@ class GiftHttpApi(HttpApiMeta):
     def __init__(self, domain: str, protocol: str):
         super().__init__(domain, protocol)
 
-    def get_gift_wall_list(self) -> dict:
+    def get_gift_wall_list(self, json: dict) -> dict:
         """获取礼物墙列表"""
-        return self.http_client.send_request(method="get", path=GiftPathAndroidSuffix.gift_wall_list.value)
+        return self.http_client.send_request(method="post", path=GiftPathAndroidSuffix.gift_wall_list.value, json=json)
