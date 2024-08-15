@@ -27,7 +27,7 @@ class PublicResourceHttpApi(HttpApiMeta):
         super().__init__(domain, protocol)
 
     def get_pr_level_relation_list(self, json: dict) -> dict:
-        """获取视频资源"""
+        """获取用户的层级关系列表"""
         return self.http_client.send_request(
             method="post", path=PublicResourcePathAndroidSuffix.level_relation_list.value, json=json
         )
