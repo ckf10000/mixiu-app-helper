@@ -21,6 +21,9 @@ class MaintainPathAndroidSuffix(Enum):
     event_trigger = '/main/event/trigger'
     distance_list = '/main/distance'
     config_url = '/main/configURL'
+    hot_list = '/m/list/hot/v2'
+    app_skin = '/m/getAppSkin'
+    banner_list_module = '/m/banner/list/module'
 
 
 class MaintainPathIOSSuffix(Enum):
@@ -65,3 +68,17 @@ class MaintainHttpApi(HttpApiMeta):
     def get_main_config_url(self, json: dict) -> dict:
         """获取配置URL"""
         return self.http_client.send_request(method="post", path=MaintainPathAndroidSuffix.config_url.value, json=json)
+
+    def get_main_hot_list(self, json: dict) -> dict:
+        """获取系统热点配置列表"""
+        return self.http_client.send_request(method="post", path=MaintainPathAndroidSuffix.hot_list.value, json=json)
+
+    def get_main_app_skin(self, json: dict) -> dict:
+        """获取app皮肤"""
+        return self.http_client.send_request(method="post", path=MaintainPathAndroidSuffix.app_skin.value, json=json)
+
+    def get_main_banner_list_module(self, json: dict) -> dict:
+        """获取首页banner模块列表"""
+        return self.http_client.send_request(
+            method="post", path=MaintainPathAndroidSuffix.banner_list_module.value, json=json
+        )
