@@ -29,25 +29,25 @@ class RoomHttpApi(HttpApiMeta):
     def __init__(self, domain: str, protocol: str):
         super().__init__(domain, protocol)
 
-    def get_room_rookie_recommend_list(self, json: dict) -> dict:
+    def get_main_rookie_recommend_list(self, json: dict) -> dict:
         """获取语音房新手推荐"""
         return self.http_client.send_request(
             method="post", path=RoomPathAndroidSuffix.rookie_recommend_list.value, json=json
         )
 
-    def get_room_quick_entrance_label_list(self, json: dict) -> dict:
+    def get_main_quick_entrance_label_list(self, json: dict) -> dict:
         """获取语音房快速入口标签列表"""
         return self.http_client.send_request(
             method="post", path=RoomPathAndroidSuffix.quick_entrance_label_list.value, json=json
         )
 
-    def get_room_hot_recommend_list(self, json: dict) -> dict:
+    def get_main_hot_recommend_list(self, json: dict) -> dict:
         """获取语音房热门推荐列表"""
         return self.http_client.send_request(
             method="post", path=RoomPathAndroidSuffix.hot_recommend_list.value, json=json
         )
 
-    def get_room_catalogue_list(self, json: dict) -> dict:
+    def get_main_catalogue_list(self, json: dict) -> dict:
         """获取语音房catalogue配置"""
         return self.http_client.send_request(
             method="post", path=RoomPathAndroidSuffix.room_catalogue_list.value, json=json
