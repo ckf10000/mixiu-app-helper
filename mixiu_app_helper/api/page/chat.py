@@ -2,33 +2,37 @@
 """
 # ---------------------------------------------------------------------------------------------------------
 # ProjectName:  mixiu-app-helper
-# FileName:     settings.py
+# FileName:     chat.py
 # Description:  TODO
-# Author:       mfkifhss2023
-# CreateDate:   2024/08/05
+# Author:       zhouhanlin
+# CreateDate:   2024/08/16
 # Copyright ©2011-2024. Hunan xxxxxxx Company limited. All rights reserved.
 # ---------------------------------------------------------------------------------------------------------
 """
 from poco.proxy import UIObjectProxy
-from mixiu_app_helper.api.page.my.my import UiMyApi
 from airtest_helper.platform import ANDROID_PLATFORM
 from airtest_helper.libs.extend import get_poco_factory
+from mixiu_app_helper.api.page.portal import UiHomePortalApi, UiMessagePortalApi
 
 
-class UiSettingsApi(UiMyApi):
+class UiHallChatApi(UiHomePortalApi):
 
-    def get_settings_menu(self, menu_name: str, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
+    def get_hall_chat_enter(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
         d_type = ""
         name = ""
         if self.platform == ANDROID_PLATFORM:
             d_type = "android.widget.TextView"
-            name = "android.widget.TextView"
-        options = dict(d_type=d_type, name=name, text=menu_name)
+            name = "com.mixiu.com:id/iv_anchor_im"
+        options = dict(d_type=d_type, name=name, text="来聊聊天...")
         return get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
 
-    def touch_settings_menu(self, menu_name: str, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
-        settings_menu_poco = self.get_settings_menu(menu_name=menu_name, loop=loop, peroid=peroid, **kwargs)
-        if settings_menu_poco:
-            settings_menu_poco.click()
+    def touch_hall_chat_enter(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
+        hall_chat_enter_poco = self.get_hall_chat_enter(loop=loop, peroid=peroid, **kwargs)
+        if hall_chat_enter_poco:
+            hall_chat_enter_poco.click()
             return True
         return False
+
+
+class UiPrivateChatApi(UiMessagePortalApi):
+    pass

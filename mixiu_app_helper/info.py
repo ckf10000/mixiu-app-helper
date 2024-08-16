@@ -15,3 +15,21 @@ from enum import Enum
 class Constant(Enum):
     ANDROID_APP_NAME = "com.mixiu.com"
     iOS_APP_NAME = "iOS"
+
+
+module_tree = {
+    "l1-1": "ui",
+    "l1-2": "api",
+    "l2-1": "ui.my",
+    "l2-2": "ui.home",
+    "l2-3": "ui.square",
+    "l2-4": "ui.message",
+    "l2-5": "ui.favorite",
+    "l2-6": "ui.emoji",
+    "l3-1": "ui.my.profile",
+    "l3-2": "ui.my.settings",
+    "l3-3": "ui.favorite.voice",
+    "l3-4": "ui.favorite.live",
+    "l3-5": "ui.emoji.hall",
+    "l3-6": "ui.emoji.private_chat"
+}

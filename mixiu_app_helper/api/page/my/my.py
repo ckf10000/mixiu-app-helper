@@ -2,37 +2,20 @@
 """
 # ---------------------------------------------------------------------------------------------------------
 # ProjectName:  mixiu-app-helper
-# FileName:     profile.py
+# FileName:     my.py
 # Description:  TODO
 # Author:       zhouhanlin
-# CreateDate:   2024/07/30
+# CreateDate:   2024/08/16
 # Copyright ©2011-2024. Hunan xxxxxxx Company limited. All rights reserved.
 # ---------------------------------------------------------------------------------------------------------
 """
 from poco.proxy import UIObjectProxy
-from airtest_helper.core import DeviceApi
 from airtest_helper.platform import ANDROID_PLATFORM
+from mixiu_app_helper.api.page.portal import UiMyPortalApi
 from airtest_helper.libs.extend import get_poco_factory, get_poco_child
 
 
-class UiProfileApi(DeviceApi):
-
-    def get_my(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
-        d_type = ""
-        name = ""
-        if self.platform == ANDROID_PLATFORM:
-            d_type = "android.widget.TextView"
-            name = "com.mixiu.com:id/tvTabItemText4"
-        options = dict(d_type=d_type, name=name, text="我的")
-        return get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
-
-    def touch_my(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
-        my_poco = self.get_my(loop=loop, peroid=peroid, **kwargs)
-        if my_poco:
-            my_poco.click()
-            return True
-        return False
-
+class UiProfileApi(UiMyPortalApi):
     def get_user_uid(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> int or None:
         options = dict(d_type="android.widget.LinearLayout", name="com.mixiu.com:id/llUidAddress")
         parent_poco = get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
@@ -104,3 +87,22 @@ class UiProfileApi(DeviceApi):
         if user_name_element:
             return user_name_element.get_text().strip()
         return None
+
+
+class UiMyApi(UiMyPortalApi):
+
+    def get_settings_enter(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
+        d_type = ""
+        name = ""
+        if self.platform == ANDROID_PLATFORM:
+            d_type = "android.widget.ImageView"
+            name = "com.mixiu.com:id/ivTopAllMenu"
+        options = dict(d_type=d_type, name=name)
+        return get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
+
+    def touch_settings_enter(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
+        settings_enter_poco = self.get_settings_enter(loop=loop, peroid=peroid, **kwargs)
+        if settings_enter_poco:
+            settings_enter_poco.click()
+            return True
+        return False
