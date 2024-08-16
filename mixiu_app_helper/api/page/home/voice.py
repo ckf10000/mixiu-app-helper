@@ -15,7 +15,7 @@ from airtest_helper.libs.extend import get_poco_factory
 from mixiu_app_helper.api.page.home.room import UiRoomApi
 
 
-class UiVideoRoomApi(UiRoomApi):
+class UiVoiceRoomApi(UiRoomApi):
 
     def get_randomly_idle_seat(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
         d_type = ""
@@ -49,16 +49,16 @@ class UiVideoRoomApi(UiRoomApi):
             return True
         return False
 
-    def get_leave_video_room(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
+    def get_leave_voice_room(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
         d_type = name = ""
         if self.platform == ANDROID_PLATFORM:
             d_type = name = "android.widget.TextView"
         options = dict(d_type=d_type, name=name, text="退出房间")
         return get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
 
-    def touch_leave_video_room(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
-        leave_video_room_poco = self.get_leave_video_room(loop=loop, peroid=peroid, **kwargs)
-        if leave_video_room_poco:
-            leave_video_room_poco.click()
+    def touch_leave_voice_room(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
+        leave_voice_room_poco = self.get_leave_voice_room(loop=loop, peroid=peroid, **kwargs)
+        if leave_voice_room_poco:
+            leave_voice_room_poco.click()
             return True
         return False

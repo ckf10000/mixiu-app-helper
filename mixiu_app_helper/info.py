@@ -31,5 +31,9 @@ module_tree = {
     "l3-3": "ui.favorite.voice",
     "l3-4": "ui.favorite.live",
     "l3-5": "ui.emoji.hall",
-    "l3-6": "ui.emoji.private_chat"
+    "l3-6": "ui.emoji.private_chat",
+    "l3-7": "ui.home.room",
+    "l3-8": "ui.home.live",
+    "l4-1": "ui.home.room.voice",
+    "l4-2": "ui.home.live.video",
 }
