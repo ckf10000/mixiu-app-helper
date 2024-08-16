@@ -74,3 +74,33 @@ class UiVoiceRoomApi(UiRoomApi):
             text = poco_proxy.get_text().strip()
             return int(text.replace("ID:", ""))
         return 0
+
+    def get_user_msc_seat_number(self, uname: str, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
+        d_type = name = ""
+        if self.platform == ANDROID_PLATFORM:
+            d_type = "android.widget.TextView"
+            name = "com.mixiu.com:id/setNameTv"
+        options = dict(d_type=d_type, name=name, text=uname)
+        return get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
+
+    def touch_user_msc_seat_number(self, uname: str, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
+        seat_number_poco = self.get_user_msc_seat_number(uname=uname, loop=loop, peroid=peroid, **kwargs)
+        if seat_number_poco:
+            seat_number_poco.click()
+            return True
+        return False
+
+    def get_offline_msc(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
+        d_type = name = ""
+        if self.platform == ANDROID_PLATFORM:
+            d_type = "android.widget.TextView"
+            name = "com.mixiu.com:id/valueTv"
+        options = dict(d_type=d_type, name=name, text="下麦旁听")
+        return get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
+
+    def touch_offline_msc(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
+        offline_msc_poco = self.get_offline_msc(loop=loop, peroid=peroid, **kwargs)
+        if offline_msc_poco:
+            offline_msc_poco.click()
+            return True
+        return False
