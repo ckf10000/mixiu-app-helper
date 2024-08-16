@@ -90,7 +90,7 @@ class UiVoiceRoomApi(UiRoomApi):
             return True
         return False
 
-    def get_offline_msc(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
+    def get_off_msc_menu(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
         d_type = name = ""
         if self.platform == ANDROID_PLATFORM:
             d_type = "android.widget.TextView"
@@ -98,9 +98,24 @@ class UiVoiceRoomApi(UiRoomApi):
         options = dict(d_type=d_type, name=name, text="下麦旁听")
         return get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
 
-    def touch_offline_msc(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
-        offline_msc_poco = self.get_offline_msc(loop=loop, peroid=peroid, **kwargs)
-        if offline_msc_poco:
-            offline_msc_poco.click()
+    def touch_off_msc_menu(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
+        off_msc_poco = self.get_off_msc_menu(loop=loop, peroid=peroid, **kwargs)
+        if off_msc_poco:
+            off_msc_poco.click()
+            return True
+        return False
+
+    def get_on_msc_menu(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
+        d_type = name = ""
+        if self.platform == ANDROID_PLATFORM:
+            d_type = "android.widget.TextView"
+            name = " com.mixiu.com:id/valueTv"
+        options = dict(d_type=d_type, name=name, text="上麦")
+        return get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
+
+    def touch_on_msc_menu(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
+        on_msc_poco = self.get_on_msc_menu(loop=loop, peroid=peroid, **kwargs)
+        if on_msc_poco:
+            on_msc_poco.click()
             return True
         return False
