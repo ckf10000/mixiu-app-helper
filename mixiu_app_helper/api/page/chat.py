@@ -26,11 +26,27 @@ class UiHallChatApi(UiHomePortalApi):
         options = dict(d_type=d_type, name=name, text="来聊聊天...")
         return get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
 
-    def send_hall_chat_content(self, content: str, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
+    def touch_hall_chat_enter(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
         hall_chat_enter_poco = self.get_hall_chat_enter(loop=loop, peroid=peroid, **kwargs)
         if hall_chat_enter_poco:
             hall_chat_enter_poco.click()
-            hall_chat_enter_poco.set_text(content)
+            return True
+        return False
+
+    def get_hall_input_box(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> UIObjectProxy:
+        d_type = ""
+        name = ""
+        if self.platform == ANDROID_PLATFORM:
+            d_type = "android.widget.EditText"
+            name = "com.mixiu.com:id/msg_live_send_edt_input"
+        options = dict(d_type=d_type, name=name)
+        return get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
+
+    def send_hall_chat_content(self, content: str, loop: int = 20, peroid: float = 0.5, **kwargs) -> bool:
+        input_box_poco = self.get_hall_input_box(loop=loop, peroid=peroid, **kwargs)
+        if input_box_poco:
+            input_box_poco.click()
+            input_box_poco.set_text(content)
             # 模拟键盘按下回车键（keyCode为66表示回车键）
             self.dev.keyevent(keyname="66")
             return True
