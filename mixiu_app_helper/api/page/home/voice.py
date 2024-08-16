@@ -109,7 +109,7 @@ class UiVoiceRoomApi(UiRoomApi):
         d_type = name = ""
         if self.platform == ANDROID_PLATFORM:
             d_type = "android.widget.TextView"
-            name = " com.mixiu.com:id/valueTv"
+            name = "com.mixiu.com:id/valueTv"
         options = dict(d_type=d_type, name=name, text="上麦")
         return get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
 
