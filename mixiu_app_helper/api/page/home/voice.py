@@ -62,3 +62,15 @@ class UiVoiceRoomApi(UiRoomApi):
             leave_voice_room_poco.click()
             return True
         return False
+
+    def get_voice_room_id(self, loop: int = 20, peroid: float = 0.5, **kwargs) -> int:
+        d_type = name = ""
+        if self.platform == ANDROID_PLATFORM:
+            d_type = "android.widget.TextView"
+            name = "com.mixiu.com:id/tvShortId"
+        options = dict(d_type=d_type, name=name)
+        poco_proxy = get_poco_factory(poco=self.poco, options=options, loop=loop, peroid=peroid, **kwargs)
+        if poco_proxy:
+            text = poco_proxy.get_text().strip()
+            return int(text.replace("ID:", ""))
+        return 0
