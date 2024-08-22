@@ -22,6 +22,7 @@ class UserPathAndroidSuffix(Enum):
     visit_records = '/user/visit/record/list'
     visit_record = '/user/visit/record'
     quick_reply_list = '/user/quick/reply/list'
+    effect_config = '/user/get/effectConfig'
 
 
 class UserPathIOSSuffix(Enum):
@@ -68,3 +69,7 @@ class UserHttpApi(HttpApiMeta):
         return self.http_client.send_request(
             method="post", path=UserPathAndroidSuffix.quick_reply_list.value, json=json
         )
+
+    def get_user_effect_config(self, json: dict) -> dict:
+        """获取用户效果配置"""
+        return self.http_client.send_request(method="post", path=UserPathAndroidSuffix.effect_config.value, json=json)

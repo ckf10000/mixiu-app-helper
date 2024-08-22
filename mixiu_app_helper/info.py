@@ -44,6 +44,8 @@ module_tree = {
     "l2-23": "api.tour",
     "l2-24": "api.user",
     "l2-25": "api.relation",
+    "l2-26": "api.task",
+    "l2-27": "api.voice",
     "l3-1": "ui.my.profile",
     "l3-2": "ui.my.settings",
     "l3-3": "ui.favorite.voice",
