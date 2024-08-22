@@ -20,6 +20,9 @@ class UserPathAndroidSuffix(Enum):
     user_profile = '/user/get'
     label_wall_light = '/user/labelWall/light'
     user_ext = '/user/ext/get'
+    visit_records = '/visit/record/list'
+    visit_record = '/visit/record'
+    quick_reply_list = '/quick/reply/list'
 
 
 class UserPathIOSSuffix(Enum):
@@ -58,3 +61,17 @@ class UserHttpApi(HttpApiMeta):
     def get_user_ext(self, json: dict) -> dict:
         """获取用户扩展信息"""
         return self.http_client.send_request(method="post", path=UserPathAndroidSuffix.user_ext.value, json=json)
+
+    def get_user_visit_records(self, json: dict) -> dict:
+        """获取用户数据列表—谁看过我"""
+        return self.http_client.send_request(method="post", path=UserPathAndroidSuffix.visit_records.value, json=json)
+
+    def get_user_visit_record(self, json: dict) -> dict:
+        """获取用户数据—谁看过我"""
+        return self.http_client.send_request(method="post", path=UserPathAndroidSuffix.visit_record.value, json=json)
+
+    def get_user_quick_replys(self, json: dict) -> dict:
+        """获取用户快速回复短文列表"""
+        return self.http_client.send_request(
+            method="post", path=UserPathAndroidSuffix.quick_reply_list.value, json=json
+        )

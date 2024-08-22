@@ -13,7 +13,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='mixiu-app-helper',
-    version='0.2.0',
+    version='0.2.1',
     description='This is my mixiu app helper package',
     long_description='This is my mixiu app helper package',
     author='ckf10000',
