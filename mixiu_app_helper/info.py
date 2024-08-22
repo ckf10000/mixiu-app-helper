@@ -62,6 +62,7 @@ module_tree = {
     "l3-17": "api.user.visit",
     "l3-18": "api.user.quick",
     "l3-19": "api.relation.friend",
+    "l3-20": "api.user.label",
     "l4-1": "ui.home.room.voice",
     "l4-2": "ui.home.live.video",
 }
