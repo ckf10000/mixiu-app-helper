@@ -16,7 +16,6 @@ from mixiu_app_helper.api.http.http_client import HttpApiMeta
 class UserPathAndroidSuffix(Enum):
     user_special = '/user/getNewIsSpecialUser'
     user_settings = '/user/setting/get'
-    friend_recommend = '/relation/friend/recommend'
     user_profile = '/user/get'
     label_wall_light = '/user/labelWall/light'
     user_ext = '/user/ext/get'
@@ -41,12 +40,6 @@ class UserHttpApi(HttpApiMeta):
     def get_user_settings(self, json: dict) -> dict:
         """获取用户设置信息"""
         return self.http_client.send_request(method="post", path=UserPathAndroidSuffix.user_settings.value, json=json)
-
-    def get_user_friend_recommend(self, json: dict) -> dict:
-        """获取用户朋友推荐信息"""
-        return self.http_client.send_request(
-            method="post", path=UserPathAndroidSuffix.friend_recommend.value, json=json
-        )
 
     def get_user_profile(self, json: dict) -> dict:
         """获取用户个人资料"""
