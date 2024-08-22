@@ -20,9 +20,9 @@ class UserPathAndroidSuffix(Enum):
     user_profile = '/user/get'
     label_wall_light = '/user/labelWall/light'
     user_ext = '/user/ext/get'
-    visit_records = '/visit/record/list'
-    visit_record = '/visit/record'
-    quick_reply_list = '/quick/reply/list'
+    visit_records = '/user/visit/record/list'
+    visit_record = '/user/visit/record'
+    quick_reply_list = '/user/quick/reply/list'
 
 
 class UserPathIOSSuffix(Enum):
